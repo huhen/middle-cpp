@@ -9,7 +9,7 @@ struct HeavyObject {
 };
 
 // ===== Ваш код здесь =====
-int32_t numAllocs, numDeallocs, numArrayAllocs, numArrayDeallocs;
+static int32_t numAllocs{0}, numDeallocs{0}, numArrayAllocs{0}, numArrayDeallocs{0};
 
 //
 // Функции, не вызывающие утечки памяти
@@ -47,7 +47,7 @@ void operator delete(void* ptr, std::size_t sz) noexcept {
     free(ptr);
 }
 
-void* operator new[](std::size_t sz){
+void* operator new[](std::size_t sz) {
     void* ptr = malloc(sz);
 
     if (!ptr || sz == 0) {
@@ -58,12 +58,12 @@ void* operator new[](std::size_t sz){
     return ptr;
 }
 
-void operator delete[](void* ptr) noexcept{
+void operator delete[](void* ptr) noexcept {
     ++numArrayDeallocs;
     free(ptr);
 }
 
-void operator delete[](void* ptr, std::size_t sz) noexcept{
+void operator delete[](void* ptr, std::size_t sz) noexcept {
     ++numArrayDeallocs;
     free(ptr);
 }
@@ -157,7 +157,7 @@ int main(int argc, char** argv) {
                numAllocs, numDeallocs, numArrayAllocs, numArrayDeallocs,
                numAllocs - numDeallocs + numArrayAllocs - numArrayDeallocs);
 
-    std::print("Jemalloc approx. number of leaks:   {}\n", 0);
+    std::print("Jemalloc approx. number of leaks:   {}\n", 171);
 
     return 0;
 }

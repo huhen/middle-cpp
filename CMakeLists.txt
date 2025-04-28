@@ -11,10 +11,12 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     add_link_options(-stdlib=libc++)
 endif()
 
-#add_compile_options(-fsanitize=address,undefined -Wall -Wextra -Werror)
-#add_link_options(-fsanitize=address,undefined -Wall -Wextra -Werror)
-add_compile_options(-fsanitize=address,undefined -Wall -Wextra)
-add_link_options(-fsanitize=address,undefined -Wall -Wextra)
+# add_compile_options(-fsanitize=address,undefined -Wall -Wextra -Werror)
+# add_link_options(-fsanitize=address,undefined -Wall -Wextra -Werror)
+# add_compile_options(-fsanitize=address,undefined -Wall -Wextra)
+# add_link_options(-fsanitize=address,undefined -Wall -Wextra)
+add_compile_options(-Wall -Wextra)
+add_link_options(-Wall -Wextra)
 
 add_subdirectory(sprint1)
 

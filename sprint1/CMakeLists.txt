@@ -1,2 +1,2 @@
 
-add_subdirectory(mleak)
+add_subdirectory(app_with_mem_leaks)

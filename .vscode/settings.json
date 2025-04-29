@@ -1,4 +1,6 @@
 {
+    "cmake.generator": "Ninja",
+    
     "files.associations": {
         "iostream": "cpp",
         "array": "cpp",
@@ -104,5 +106,8 @@
         "print": "cpp",
         "queue": "cpp",
         "stack": "cpp"
-    }
+    },
+    "cmake.preferredGenerators": [
+        "Ninja"
+    ]
 }

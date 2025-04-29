@@ -29,3 +29,10 @@ sudo make install
 ```
 MALLOC_CONF=prof_leak:true,lg_prof_sample:0,prof_final:true,prof:true ./app
 ```
+
+windows
+в settings "cmake.generator": "Ninja"
+```
+winget install Ninja-build.Ninja
+winget install cmake
+```

@@ -6,17 +6,47 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-if (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-    add_compile_options(-stdlib=libc++)
-    add_link_options(-stdlib=libc++)
-endif()
+message(STATUS "Using compiler: ${CMAKE_CXX_COMPILER_ID}")
+message(STATUS "Compiler path: ${CMAKE_CXX_COMPILER}")
 
 # add_compile_options(-fsanitize=address,undefined -Wall -Wextra -Werror)
 # add_link_options(-fsanitize=address,undefined -Wall -Wextra -Werror)
 # add_compile_options(-fsanitize=address,undefined -Wall -Wextra)
 # add_link_options(-fsanitize=address,undefined -Wall -Wextra)
-add_compile_options(-Wall -Wextra)
-add_link_options(-Wall -Wextra)
+# add_compile_options(-Wall -Wextra)
+# add_link_options(-Wall -Wextra)
+
+# Флаги только для Clang
+if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+    # Стандартные флаги Clang
+    # add_compile_options(
+    #     -Wall -Wextra -Werror
+    #     -O3
+    #     -UNDEBUG
+    # )
+
+    # На Windows по умолчанию используется MSVC STL
+    if(WIN32)
+        add_compile_options(
+            # /std:c++23
+            /W4 /WX
+            /O2 /DNDEBUG
+            /D_WIN32_WINNT=0x0A00
+            /EHsc # Включаем обработку исключений
+            /Zc:__cplusplus
+        )
+
+        add_link_options(/SUBSYSTEM:CONSOLE /INCREMENTAL:NO)
+    else()
+        # libc++ на других платформах
+        add_compile_options(-stdlib=libc++)
+        add_link_options(-stdlib=libc++)
+    endif()
+
+else()
+    message(FATAL_ERROR "This project requires Clang compiler.")
+endif()
+
 
 add_subdirectory(sprint1)
 

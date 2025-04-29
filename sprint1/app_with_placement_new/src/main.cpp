@@ -65,10 +65,10 @@ int main() {
     auto* arrPtrPN = (Image*)std::malloc(sizeof(Image) * len);
     // Ваш код здесь
     for (size_t i = 0; i < len; ++i) {
-        new (std::addressof(arrPtrPN[i])) Image(256,256);
+        new (std::addressof(arrPtrPN[i])) Image(256, 256);
         arrPtrPN[i].~Image();
     }
     std::free(arrPtrPN);
-    
+
     return 0;
 }

@@ -30,7 +30,8 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
         add_compile_options(
             # /std:c++23
             /W4 /WX
-            /O2 /DNDEBUG
+            # /O3 /DNDEBUG
+            /DDEBUG
             /D_WIN32_WINNT=0x0A00
             /EHsc # Включаем обработку исключений
             /Zc:__cplusplus

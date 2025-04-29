@@ -19,8 +19,13 @@ tar -xjf jemalloc-5.3.0.tar.bz2
 cd jemalloc-5.3.0
 ./configure --enable-prof
 ```
-
+далее:
 ```
 make
 sudo make install
+```
+
+Запуск с профилированием:
+```
+MALLOC_CONF=prof_leak:true,lg_prof_sample:0,prof_final:true,prof:true ./app
 ```

@@ -10,7 +10,23 @@
             "cStandard": "c23",
             "cppStandard": "c++23",
             "intelliSenseMode": "linux-clang-x64",
-            "compilerArgs": ["-stdlib=libc++"]
+            "compilerArgs": [
+                "-stdlib=libc++"
+            ]
+        },
+        {
+            "name": "WindowsClang",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [],
+            "compilerPath": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/x64/bin/clang++.exe",
+            "cStandard": "c23",
+            "cppStandard": "c++23",
+            "intelliSenseMode": "windows-clang-x64",
+            "compilerArgs": [
+                "-stdlib=libc++"
+            ]
         }
     ],
     "version": 4

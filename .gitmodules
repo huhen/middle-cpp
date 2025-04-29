@@ -1,3 +1,4 @@
 [submodule "wil"]
 	path = wil
 	url = https://github.com/microsoft/wil.git
+	branch = v1.0.250325.1

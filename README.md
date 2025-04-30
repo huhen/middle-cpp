@@ -36,3 +36,15 @@ windows
 winget install Ninja-build.Ninja
 winget install cmake
 ```
+
+boost
+```
+cd ~
+wget https://archives.boost.io/release/1.88.0/source/boost_1_88_0.tar.bz2
+tar -xjf boost_1_88_0.tar.bz2
+cd boost_1_88_0
+./bootstrap.sh --prefix=/usr/local/boost-1.88.0
+./b2 headers
+# ./b2
+sudo ./b2 install
+```

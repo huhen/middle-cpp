@@ -3,7 +3,8 @@
         {
             "name": "LinuxClang",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "/usr/local/boost-1.88.0/include"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang++",

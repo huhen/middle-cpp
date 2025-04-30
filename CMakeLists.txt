@@ -6,8 +6,8 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-message(STATUS "Using compiler: ${CMAKE_CXX_COMPILER_ID}")
-message(STATUS "Compiler path: ${CMAKE_CXX_COMPILER}")
+# message(STATUS "Using compiler: ${CMAKE_CXX_COMPILER_ID}")
+# message(STATUS "Compiler path: ${CMAKE_CXX_COMPILER}")
 
 # add_compile_options(-fsanitize=address,undefined -Wall -Wextra -Werror)
 # add_link_options(-fsanitize=address,undefined -Wall -Wextra -Werror)
@@ -40,7 +40,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
         add_link_options(/SUBSYSTEM:CONSOLE /INCREMENTAL:NO)
     else()
         # libc++ на других платформах
-        add_compile_options(-stdlib=libc++)
+        add_compile_options(-stdlib=libc++ -O3 -fsanitize=address,undefined -Wall -Wextra)
         add_link_options(-stdlib=libc++)
     endif()
 

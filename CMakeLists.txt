@@ -50,6 +50,7 @@ endif()
 
 
 add_subdirectory(sprint1)
+add_subdirectory(sprint2)
 
 #include(CTest)
 #enable_testing()

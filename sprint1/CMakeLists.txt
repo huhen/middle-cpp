@@ -6,6 +6,6 @@ add_subdirectory(app_scope_guard)
 
 add_subdirectory(win)
 
-add_executable(app_draft_linux
+add_executable(app_draft_sprint1
     draft.cpp
 )

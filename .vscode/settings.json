@@ -1,7 +1,8 @@
 {
     "cmake.generator": "Ninja",
-    "C_Cpp.codeAnalysis.clangTidy.enabled": true,
-    
+    "cmake.preferredGenerators": [
+        "Ninja"
+    ],
     "files.associations": {
         "iostream": "cpp",
         "array": "cpp",
@@ -108,7 +109,13 @@
         "queue": "cpp",
         "stack": "cpp"
     },
-    "cmake.preferredGenerators": [
-        "Ninja"
-    ]
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "C_Cpp.default.cppStandard": "c++23",
+    "C_Cpp.default.cStandard": "c23",
+    "C_Cpp.default.intelliSenseMode": "linux-gcc-x64",
+    "C_Cpp.formatting": "clangFormat"
+    // "C_Cpp.codeAnalysis.clangTidy.enabled": true,
+    // "C_Cpp.default.compileCommands": [
+    //     "${sourceDir}/build/compile_commands.json"
+    // ]
 }

@@ -40,14 +40,14 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 
         add_link_options(/SUBSYSTEM:CONSOLE /INCREMENTAL:NO)
     else()
-        add_compile_options(-stdlib=libc++ -O3 -Wall -Wextra)
-        add_link_options(-stdlib=libc++)
+        # add_compile_options(-stdlib=libc++ -O3 -Wall -Wextra)
+        # add_link_options(-stdlib=libc++)
+        add_compile_options(-O3 -Wall -Wextra)
     endif()
 
 else()
-    message(FATAL_ERROR "This project requires Clang compiler.")
+    add_compile_options(-O3 -Wall -Wextra)
 endif()
-
 
 add_subdirectory(sprint1)
 add_subdirectory(sprint2)

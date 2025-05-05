@@ -42,7 +42,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     else()
         # add_compile_options(-stdlib=libc++ -O3 -Wall -Wextra)
         # add_link_options(-stdlib=libc++)
-        add_compile_options(-O3 -Wall -Wextra)
+        add_compile_options(-Og -g3 -Wall -Wextra)
     endif()
 
 else()

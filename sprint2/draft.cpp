@@ -1,19 +1,34 @@
 #include <iostream>
-#include <thread>
-#include <chrono>
+#include <memory>
+#include <print>
+
+struct HeavyData {
+    std::array<int, 1024> data;
+};
+
+void UseUniquePtr(std::unique_ptr<HeavyData> ptr) {
+    std::print("unique_ptr holds pointer {}\n", &ptr);
+}
+
+void GetUseCount(std::shared_ptr<HeavyData> ptr) {
+    std::print("shared_ptr used by {} objects\n", ptr.use_count());
+}
 
 int main() {
-    std::jthread worker([](std::stop_token st) {
-        for (int i = 0; i < 5; ++i) {
-            if (st.stop_requested()) {
-                std::cout << "Остановка потока\n";
-                return;
-            }
-            std::this_thread::sleep_for(std::chrono::seconds(1));
-            std::cout << "Работаю... " << i << "\n";
-        }
-    });
+    // 1.
+    std::unique_ptr<HeavyData> ptr1 = std::make_unique<HeavyData>();
+    UseUniquePtr(std::move(ptr1));
 
-    std::this_thread::sleep_for(std::chrono::seconds(3));
-    worker.request_stop(); // Запрос остановки
-} // Деструктор worker автоматически вызывает join()
+    // 2.
+    std::unique_ptr<HeavyData> ptr2 = std::make_unique<HeavyData>();
+    std::unique_ptr<HeavyData> ptr3 = std::move(ptr2);
+
+    // 3.
+    std::shared_ptr<HeavyData> ptr4 = std::make_unique<HeavyData>();
+
+    // 4.
+    std::unique_ptr<HeavyData> ptr5 = std::make_unique<HeavyData>();
+    GetUseCount(std::move(ptr5));
+
+    return 0;
+}

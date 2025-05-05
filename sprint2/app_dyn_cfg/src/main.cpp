@@ -83,7 +83,7 @@ private:
         while (isActive_) {
             auto newConfigRaw = Read();
             if (newConfigRaw != currentConfigRaw_) {
-                currentConfigRaw_ = newConfigRaw;
+                currentConfigRaw_ = std::move(newConfigRaw);
 
                 auto [configData, err] = Parse(currentConfigRaw_);
                 if (err != std::errc()) {

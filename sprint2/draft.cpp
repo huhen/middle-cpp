@@ -7,7 +7,7 @@ struct HeavyData {
 };
 
 void UseUniquePtr(std::unique_ptr<HeavyData> ptr) {
-    std::print("unique_ptr holds pointer {}\n", &ptr);
+    std::print("unique_ptr holds pointer {:#x}\n", (uintptr_t)ptr.get());
 }
 
 void GetUseCount(std::shared_ptr<HeavyData> ptr) {

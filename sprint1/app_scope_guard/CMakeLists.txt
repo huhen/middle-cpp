@@ -5,7 +5,7 @@ set(Boost_USE_STATIC_RUNTIME OFF)
 
 # set(BOOST_ROOT "/usr/local/boost-1.88.0")
 # set(Boost_INCLUDE_DIR "${BOOST_ROOT}/include")
-find_package(Boost COMPONENTS headers)
+find_package(Boost COMPONENTS system)
 
 if(Boost_FOUND)
     add_executable(app_scope_guard

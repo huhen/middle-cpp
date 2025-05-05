@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10.0)
+cmake_minimum_required(VERSION 3.28.3)
 project(handbook VERSION 0.1.0 LANGUAGES C CXX)
 
 #clang++ --std=c++20 -O3 -fsanitize=address,undefined -Wall -Wextra -Werror
@@ -25,7 +25,6 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     #     -UNDEBUG
     # )
 
-    # На Windows по умолчанию используется MSVC STL
     if(WIN32)
         add_compile_options(
             # /std:c++23
@@ -33,14 +32,13 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
             # /O3 /DNDEBUG
             /DDEBUG
             /D_WIN32_WINNT=0x0A00
-            /EHsc # Включаем обработку исключений
+            /EHsc
             /Zc:__cplusplus
         )
 
         add_link_options(/SUBSYSTEM:CONSOLE /INCREMENTAL:NO)
     else()
-        # libc++ на других платформах
-        add_compile_options(-stdlib=libc++ -O3 -fsanitize=address,undefined -Wall -Wextra)
+        add_compile_options(-stdlib=libc++ -O3 -Wall -Wextra)
         add_link_options(-stdlib=libc++)
     endif()
 

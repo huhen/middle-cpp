@@ -1,5 +1,6 @@
 {
     "cmake.generator": "Ninja",
+    "C_Cpp.codeAnalysis.clangTidy.enabled": true,
     
     "files.associations": {
         "iostream": "cpp",
